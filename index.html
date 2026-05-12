@@ -14,65 +14,27 @@
       }
 
       body {
-        display: grid;
-        min-height: 100vh;
         margin: 0;
-        place-items: center;
-        background:
-          radial-gradient(circle at top, rgba(76, 111, 255, 0.18), transparent 34rem),
-          #0f172a;
-        color: #e5e7eb;
+        overflow: hidden;
+        background: white;
       }
 
       main {
-        width: min(96vw, 52rem);
-        padding: 1.25rem;
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        border-radius: 1.25rem;
-        background: rgba(15, 23, 42, 0.74);
-        box-shadow: 0 1.5rem 5rem rgba(0, 0, 0, 0.35);
-        text-align: center;
-      }
-
-      h1 {
-        margin: 0 0 0.75rem;
-        font-size: clamp(1.6rem, 4vw, 2.35rem);
-        line-height: 1.1;
-      }
-
-      p {
-        margin: 0 0 1.5rem;
-        color: #cbd5e1;
+        width: 100vw;
+        height: 100vh;
       }
 
       iframe {
         width: 100%;
-        min-height: 78vh;
+        height: 100%;
         border: 0;
-        border-radius: 0.875rem;
         background: white;
-      }
-
-      a {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 2.75rem;
-        padding: 0 1.15rem;
-        border-radius: 999px;
-        background: #8b5cf6;
-        color: white;
-        font-weight: 700;
-        text-decoration: none;
       }
     </style>
   </head>
   <body>
     <main>
-      <h1>Опрос</h1>
-      <p>Для вас случайным образом выбран один из двух вариантов опроса.</p>
       <iframe id="survey-frame" title="Опрос" loading="eager"></iframe>
-      <p><a id="fallback-link" href="#" target="_blank" rel="noopener">Открыть опрос в новой вкладке</a></p>
     </main>
 
     <script>
@@ -91,8 +53,9 @@
         return Math.floor(Math.random() * max);
       }
 
-      const targetUrl = surveys[randomIndex(surveys.length)];
-      document.getElementById("fallback-link").href = targetUrl;
+      const index = randomIndex(surveys.length);
+      console.log(index, surveys[index])
+      const targetUrl = surveys[index];
       document.getElementById("survey-frame").src = targetUrl;
     </script>
   </body>
