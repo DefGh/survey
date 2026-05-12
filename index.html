@@ -39,22 +39,11 @@
 
     <script>
       const surveys = [
-        "https://docs.google.com/forms/d/1o8yOCVfQq-d_AMwv1UiSjf4Ta2MQoCtODyQxclcPX3k/viewform",
-        "https://docs.google.com/forms/d/1HNVCnvVCVoZNl0XldjPRehePZX1fUJZO2ZejfjNe0hs/viewform",
+        "https://docs.google.com/forms/d/1o8yOCVfQq-d_AMwv1UiSjf4Ta2MQoCtODyQxclcPX3k/viewform?embedded=true",
+        "https://docs.google.com/forms/d/1HNVCnvVCVoZNl0XldjPRehePZX1fUJZO2ZejfjNe0hs/viewform?embedded=true",
       ];
 
-      function randomIndex(max) {
-        if (window.crypto?.getRandomValues) {
-          const values = new Uint32Array(1);
-          window.crypto.getRandomValues(values);
-          return values[0] % max;
-        }
-
-        return Math.floor(Math.random() * max);
-      }
-
-      const index = randomIndex(surveys.length);
-      console.log(index, surveys[index])
+      const index = Math.floor(Math.random() * surveys.length);
       const targetUrl = surveys[index];
       document.getElementById("survey-frame").src = targetUrl;
     </script>
