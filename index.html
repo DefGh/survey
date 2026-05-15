@@ -43,8 +43,14 @@
         "https://docs.google.com/forms/d/1HNVCnvVCVoZNl0XldjPRehePZX1fUJZO2ZejfjNe0hs/viewform?embedded=true",
       ];
 
-      const index = Math.floor(Math.random() * surveys.length);
-      const targetUrl = surveys[index];
+      let targetUrl = localStorage.getItem(storageKey);
+
+      if (!targetUrl) {
+        const index = Math.floor(Math.random() * surveys.length);
+        targetUrl = surveys[index];
+        localStorage.setItem(storageKey, targetUrl);
+      }
+      
       document.getElementById("survey-frame").src = targetUrl;
     </script>
   </body>
